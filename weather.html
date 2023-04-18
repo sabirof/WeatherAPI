@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Current Weather</title>
+    <link rel="stylesheet" href="weather.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.min.css"
+    />
+  </head>
+  <body>
+    <h1>Get the current weather in your city!</h1>
+    <form>
+      <label for="city">Enter City Name:</label>
+      <input type="text" id="city" name="city" />
+      <button type="button" id="citybtn">Get Weather</button>
+    </form>
+
+    <div id="weather-info">
+      <div class="weather-card">
+        <h2 class="city-name"></h2>
+        <div class="weather-info">
+          <i class="weather-icon"></i>
+          <p class="temperature"></p>
+          <p class="description"></p>
+          <p class="humidity"></p>
+        </div>
+      </div>
+    </div>
+
+    <script src="weather.js"></script>
+  </body>
+</html>

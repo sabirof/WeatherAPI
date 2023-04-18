@@ -1,0 +1,95 @@
+:root {
+    --color-clear: #6CA8FF;
+    --color-cloudy: #BFC1C2;
+    --color-rainy: #6C7A89;
+    --color-snowy: #B0C4DE;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #87CEFA;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+label {
+    font-size: 1.5rem;
+    margin-right: 1rem;
+}
+
+input {
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+}
+
+button {
+    background-color:#333;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+
+}
+
+button:hover {
+    background-color: #444;
+}
+
+.weather-card {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    width: 25rem;
+}
+
+.city-name {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.weather-info {
+    display: flex;
+    align-items: center;
+}
+
+.weather-icon {
+    font-size: 4rem;
+    margin-right: 1rem;
+}
+
+.temperature {
+    font-size: 5rem;
+}
+
+.description {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+.humidity {
+    font-size: 1.5rem;
+}
