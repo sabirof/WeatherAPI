@@ -7,7 +7,7 @@ function getWeather() {
   fetch(apiUrl)
     .then((response) => response.json())
     .then((data) => {
-      const weatherInfo = document.getElementById("weather-info");
+      const weatherInfo = document.getElementById("weather-card");
       weatherInfo.innerHTML = `
         <h2>${data.name} Weather</h2>
         <p>Temperature: ${data.main.temp} &deg;C</p>

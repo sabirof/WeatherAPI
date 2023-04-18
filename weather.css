@@ -72,10 +72,7 @@ button:hover {
     margin-bottom: 1rem;
 }
 
-.weather-info {
-    display: flex;
-    align-items: center;
-}
+
 
 .weather-icon {
     font-size: 4rem;
