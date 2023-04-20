@@ -1,0 +1,36 @@
+body {
+    font-family: Arial, sans-serif;
+    
+}
+
+h1 {
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px auto;
+    max-width: 600px;
+}
+
+label,
+select,
+input {
+    margin: 5px;
+}
+
+button {
+    margin-top: 10px;
+}
+
+#outfit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+}
