@@ -52,7 +52,8 @@ button:hover {
 }
 
 #weather-card {
-    background-color:#6CA8FF;
+    background-color: rgba(108, 168, 255, 0.7);
+    /* Use RGBA color with alpha value for transparency */
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     display: flex;
@@ -60,8 +61,9 @@ button:hover {
     align-items: center;
     padding: 2rem;
     width: 25rem;
+    opacity: 0.9;
+    /* Set opacity value */
 }
-
 .city-name {
     font-size: 2rem;
     margin-bottom: 1rem;
@@ -87,7 +89,7 @@ button:hover {
     font-size: 1.5rem;
 }
 
-.sun-cloud {
+/* .sun-cloud {
     position: relative;
     height: 150px;
     width: 200px;
@@ -180,7 +182,26 @@ button:hover {
       100% {
           transform: translateX(0);
       }
-  }
+  } */
 
+body {
+    background-image: url('pics/guillaume-issaly-1XxDR8pVd48-unsplash.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-color: #333333;
+    /* dark grey color */
+    color: #ffffff;
+    /* white text color */
+}
+ .weather-container {
+     display: flex;
+     flex-wrap: wrap;
+     justify-content: space-between;
+ }
 
- 
+ .weather-card,
+ .weather-forecast {
+     width: 50%;
+ }

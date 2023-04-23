@@ -33,3 +33,62 @@ async function getWeather() {
       console.error("Error fetching weather data:", error);
     });
 }
+
+// Get the forecast data from your API
+const forecastData = [
+  {
+    day: "Monday",
+    weatherIcon: "wi-day-sunny",
+    highTemp: "85&deg;F",
+    lowTemp: "68&deg;F",
+  },
+  {
+    day: "Tuesday",
+    weatherIcon: "wi-day-cloudy",
+    highTemp: "78&deg;F",
+    lowTemp: "60&deg;F",
+  },
+  {
+    day: "Wednesday",
+    weatherIcon: "wi-day-rain",
+    highTemp: "72&deg;F",
+    lowTemp: "55&deg;F",
+  },
+  {
+    day: "Thursday",
+    weatherIcon: "wi-day-snow",
+    highTemp: "68&deg;F",
+    lowTemp: "50&deg;F",
+  },
+  {
+    day: "Friday",
+    weatherIcon: "wi-day-cloudy-gusts",
+    highTemp: "73&deg;F",
+    lowTemp: "57&deg;F",
+  },
+  {
+    day: "Saturday",
+    weatherIcon: "wi-day-sleet",
+    highTemp: "65&deg;F",
+    lowTemp: "48&deg;F",
+  },
+  {
+    day: "Sunday",
+    weatherIcon: "wi-day-haze",
+    highTemp: "70&deg;F",
+    lowTemp: "52&deg;F",
+  },
+];
+
+// Loop through the forecast data and create a row for each day
+const forecastTable = document.getElementById("forecast-data");
+forecastData.forEach((data) => {
+  const row = document.createElement("tr");
+  row.innerHTML = `
+    <td>${data.day}</td>
+    <td><i class="wi ${data.weatherIcon}"></i></td>
+    <td>${data.highTemp}</td>
+    <td>${data.lowTemp}</td>
+  `;
+  forecastTable.appendChild(row);
+});
