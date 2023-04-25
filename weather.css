@@ -17,11 +17,19 @@ h1 {
     text-align: center;
 }
 
+h2 {
+    font-family:'Times New Roman', Times, serif;
+    font-size: 2.5rem;
+        margin-bottom: 2rem;
+        text-align: center;
+        
+}
 form {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 2rem;
+    margin-top: 400px;
 }
 
 label {
@@ -53,7 +61,7 @@ button:hover {
 
 #weather-card {
     background-color: rgba(108, 168, 255, 0.7);
-    /* Use RGBA color with alpha value for transparency */
+    
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     display: flex;
@@ -62,6 +70,8 @@ button:hover {
     padding: 2rem;
     width: 25rem;
     opacity: 0.9;
+    margin-bottom: 50px;
+
     /* Set opacity value */
 }
 .city-name {
@@ -204,4 +214,62 @@ body {
  .weather-card,
  .weather-forecast {
      width: 50%;
+    background-color:rgba(128, 128, 128, 0.5);
+        color: white;
+ }
+ #weekly-weather{
+
+    background-color: rgba(108, 168, 255, 0.7);
+    
+    
+ }
+ .table-week {
+     border-collapse: collapse;
+     margin: 0 auto;
+     width: 100%;
+ }
+
+ .table-week th,
+ .table-week td {
+     padding: 10px;
+     text-align: center;
+ }
+
+ .table-week th {
+     background-color: #333;
+     color: white;
+ }
+
+ .table-week td {
+     background-color: rgba(108, 168, 255, 0.7);
+    border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+ }
+
+ .high-temp::after,
+ .low-temp::after {
+     color: #333333;
+     font-weight: bold;
+ }
+
+ #weekly-weather tr:hover {
+     background-color: #87CEFA;
+ }
+
+ .search-container {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     margin-bottom: 50px;
+ }
+
+ label,
+ input,
+ button {
+     margin: 5px;
+     word-spacing: normal;
+ }
+
+ footer {
+    padding-top: 50px;
  }

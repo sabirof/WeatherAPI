@@ -34,61 +34,38 @@ async function getWeather() {
     });
 }
 
-// Get the forecast data from your API
-const forecastData = [
-  {
-    day: "Monday",
-    weatherIcon: "wi-day-sunny",
-    highTemp: "85&deg;F",
-    lowTemp: "68&deg;F",
-  },
-  {
-    day: "Tuesday",
-    weatherIcon: "wi-day-cloudy",
-    highTemp: "78&deg;F",
-    lowTemp: "60&deg;F",
-  },
-  {
-    day: "Wednesday",
-    weatherIcon: "wi-day-rain",
-    highTemp: "72&deg;F",
-    lowTemp: "55&deg;F",
-  },
-  {
-    day: "Thursday",
-    weatherIcon: "wi-day-snow",
-    highTemp: "68&deg;F",
-    lowTemp: "50&deg;F",
-  },
-  {
-    day: "Friday",
-    weatherIcon: "wi-day-cloudy-gusts",
-    highTemp: "73&deg;F",
-    lowTemp: "57&deg;F",
-  },
-  {
-    day: "Saturday",
-    weatherIcon: "wi-day-sleet",
-    highTemp: "65&deg;F",
-    lowTemp: "48&deg;F",
-  },
-  {
-    day: "Sunday",
-    weatherIcon: "wi-day-haze",
-    highTemp: "70&deg;F",
-    lowTemp: "52&deg;F",
-  },
-];
+// Getting the forecast data from  API
 
-// Loop through the forecast data and create a row for each day
-const forecastTable = document.getElementById("forecast-data");
-forecastData.forEach((data) => {
-  const row = document.createElement("tr");
-  row.innerHTML = `
-    <td>${data.day}</td>
-    <td><i class="wi ${data.weatherIcon}"></i></td>
-    <td>${data.highTemp}</td>
-    <td>${data.lowTemp}</td>
-  `;
-  forecastTable.appendChild(row);
+const searchButton = document.querySelector("#search-button");
+const searchInput = document.querySelector("#search-city");
+
+searchButton.addEventListener("click", () => {
+  const city = searchInput.value;
+  fetchWeatherData(city);
 });
+async function fetchWeatherData(city) {
+  const response = await fetch(
+    `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=fdfc26ec7e877ffa8987ba56f2782ae4&units=metric`
+  );
+  const data = await response.json();
+  displayWeatherData(data);
+}
+function displayWeatherData(data) {
+  const forecast = data.list;
+  const weeklyWeather = document.querySelector("#weekly-weather");
+
+  for (let i = 0; i < forecast.length; i += 8) {
+    const day = new Date(forecast[i].dt_txt).toLocaleDateString("en-US", {
+      weekday: "long",
+    });
+    const weather = forecast[i].weather[0].description;
+    const highTemp = forecast[i].main.temp_max.toFixed(0);
+    const lowTemp = forecast[i].main.temp_min.toFixed(0);
+
+    const row = weeklyWeather.rows[i / 8];
+    row.cells[0].textContent = day;
+    row.cells[1].textContent = weather;
+    row.cells[2].querySelector(".high-temp").textContent = `${highTemp}°C`;
+    row.cells[3].querySelector(".low-temp").textContent = `${lowTemp}°C`;
+  }
+}
