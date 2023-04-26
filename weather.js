@@ -61,7 +61,7 @@ function displayWeatherData(data) {
   console.log("data :>> ", data);
   console.log("data :>> ", data.list);
   const forecast = data.list;
-
+  let count = 1;
   for (let i = 0; i < forecast.length; i += 8) {
     const day = new Date(forecast[i].dt_txt).toLocaleDateString("en-US", {
       weekday: "long",
@@ -71,10 +71,14 @@ function displayWeatherData(data) {
     const highTemp = forecast[i].main.temp_max.toFixed(0);
     const lowTemp = forecast[i].main.temp_min.toFixed(0);
     const iconKey = forecast[i].weather[0].icon;
+
     //create a variable that contains an URL with a dynamic value, being the iconkey the variable element
-    const iconURL = "https://openweathermap.org/img/wn/10d@2x.png";
-    const iconImg = document.getElementById("icon-img");
-    iconImg.setAttribute("src", iconURL);
+    const iconURL = `https://openweathermap.org/img/wn/${iconKey}.png`;
+    console.log(iconURL);
+    document.getElementById(`icon-img${count}`).setAttribute("src", iconURL);
+
+    console.log(`icon-img${count}`);
+
     const row = weeklyWeather.rows[i / 8];
     row.cells[0].textContent = day;
     row.cells[1].textContent = weather;
@@ -84,21 +88,6 @@ function displayWeatherData(data) {
     row.cells[3].getElementsByClassName(
       "low-temp"
     )[0].textContent = `${lowTemp}°C`;
+    count++;
   }
 }
-
-// function to get my data icons
-// fetch(ApiUrl)
-//   .then((response) => response.json())
-//   .then((data) => {
-//     const conditionCode = data.conditionCode;
-//     fetch(iconApiUrl + conditionCode)
-//       .then((response) => {})
-//       .catch((error) => {
-//         console.log(error);
-//       });
-//   })
-//   .catch((error) => {
-//     //
-//     console.log(error);
-//   });
