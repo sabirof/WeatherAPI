@@ -49,4 +49,98 @@ button:hover {
     background-color: #3366cc;
 }
 
+ .sun-cloud {
+    position: relative;
+    height: 150px;
+    width: 200px;
+    padding-bottom: 100px;
+}
+
+.sun {
+    position: absolute;
+    top: 40%;
+    left: 70%;
+    transform: translateY(-50%);
+    height: 200px;
+    width: 200px;
+    background-color: #ffd700;
+    border-radius: 50%;
+    box-shadow: 0 0 0 40px rgba(255, 215, 0, 0.4),
+            0 0 20px rgba(255, 215, 0, 0.4), 0 0 30px rgba(255, 215, 0, 0.4),
+            0 0 40px rgba(255, 215, 0, 0.4), 0 0 50px rgba(255, 215, 0, 0.4),
+            0 0 60px rgba(255, 215, 0, 0.4);
+    }
+
+    .cloud {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        height: 200px;
+        width: 300px;
+        background-color: white;
+        clip-path: polygon(0 20%, 20% 0, 80% 0, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0 80%);
+        box-shadow: 0 0 10px, inset -10px -10px 30px;
+    }
+
+  .rainbow {
+      position: absolute;
+      top: 50%;
+      left: -50px;
+      width: 100px;
+      height: 100px;
+      
+  }
+
+  .rainbow-color {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      animation: rainbow 2s infinite;
+  }
+
+  .rainbow-color-1 {
+      top: 0px;
+      left: 0px;
+      background-color: red;
+  }
+
+  .rainbow-color-2 {
+      top: 20px;
+      left: 10px;
+      background-color: orange;
+  }
+
+  .rainbow-color-3 {
+      top: 40px;
+      left: 0px;
+      background-color: yellow;
+  }
+
+  .rainbow-color-4 {
+      top: 60px;
+      left: 10px;
+      background-color: green;
+  }
+
+  .rainbow-color-5 {
+      top: 80px;
+      left: 0px;
+      background-color: blue;
+  }
+
+  @keyframes rainbow {
+      0% {
+          transform: translateX(0);
+      }
+
+      50% {
+          transform: translateX(30px);
+      }
+
+      100% {
+          transform: translateX(0);
+      }
+  } 
 

@@ -1,21 +1,22 @@
-// Getting the current weather data from API
+// Get the current weather data from API
+
+//pt1
+
 const apiKey = "fdfc26ec7e877ffa8987ba56f2782ae4";
-const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-const iconApiUrl = "https://openweathermap.org/img/wn/10d@2x.png";
 
-const citybtn = document.getElementById("citybtn");
-citybtn.addEventListener("click", getWeather);
+// event listener for the "citybtn" button that calls the "getWeather" function when clicked
+const cityBtn = document.getElementById("citybtn");
+cityBtn.addEventListener("click", getWeather);
 
+// defining the function and fetching the api data from url
 async function getWeather() {
   const city = document.getElementById("city").value;
-  const apiKey = "fdfc26ec7e877ffa8987ba56f2782ae4";
   const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-  const iconApiUrl = "https://openweathermap.org/img/wn/10d@2x.png";
-
+  // Api call request and waiting for response and then transorming the file parsed into json and relevant data is brought
   try {
     const response = await fetch(apiUrl);
     const data = await response.json();
-
+    //dipslaying the data on weather-card html element
     const weatherInfo = document.getElementById("weather-card");
     weatherInfo.innerHTML = `
       <h2>${data.name} Weather</h2>
@@ -23,7 +24,7 @@ async function getWeather() {
       <p>Humidity: ${data.main.humidity}%</p>
       <p>Description: ${data.weather[0].description}</p>
     `;
-
+    //displaying the img elements and appending the new icon to the icon-container
     const iconCode = data.weather[0].icon;
     const iconElement = document.createElement("img");
     iconElement.src = `https://openweathermap.org/img/wn/${iconCode}.png`;
@@ -34,32 +35,25 @@ async function getWeather() {
     console.error("Error fetching weather data:", error);
   }
 }
-
-// Getting the weekly forecast data from  API
-//! NO GLOBAL VARIABLES
-const searchButton = document.getElementById("search-button");
+//pt2
+//getting the weekly weather data and defining the DOM elements
+const searchBtn = document.getElementById("search-button");
 const searchInput = document.getElementById("search-city");
 const weeklyWeather = document.getElementById("weekly-weather");
-const icons = document.getElementById("weather-icon");
-
-searchButton.addEventListener("click", () => {
+//event listener
+searchBtn.addEventListener("click", () => {
   const city = searchInput.value;
   fetchWeatherData(city);
 });
-
+// fetching the location and current weather data for the city has been searched
 async function fetchWeatherData(city) {
-  const response = await fetch(
-    `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=fdfc26ec7e877ffa8987ba56f2782ae4&units=metric`
-  );
-
+  const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
+  const response = await fetch(apiUrl);
   const data = await response.json();
-  console.log(data);
   displayWeatherData(data);
 }
-
+//displaying the weather data and fetching the weather icons, and my for loop displays weather data using iteration for the whole day (my api data is updated every 3 hours)
 function displayWeatherData(data) {
-  console.log("data :>> ", data);
-  console.log("data :>> ", data.list);
   const forecast = data.list;
   let count = 1;
   for (let i = 0; i < forecast.length; i += 8) {
@@ -67,18 +61,10 @@ function displayWeatherData(data) {
       weekday: "long",
     });
     const weather = forecast[i].weather[0].description;
-
     const highTemp = forecast[i].main.temp_max.toFixed(0);
     const lowTemp = forecast[i].main.temp_min.toFixed(0);
-    const iconKey = forecast[i].weather[0].icon;
-
-    //create a variable that contains an URL with a dynamic value, being the iconkey the variable element
-    const iconURL = `https://openweathermap.org/img/wn/${iconKey}.png`;
-    console.log(iconURL);
+    const iconURL = `https://openweathermap.org/img/wn/${forecast[i].weather[0].icon}.png`;
     document.getElementById(`icon-img${count}`).setAttribute("src", iconURL);
-
-    console.log(`icon-img${count}`);
-
     const row = weeklyWeather.rows[i / 8];
     row.cells[0].textContent = day;
     row.cells[1].textContent = weather;
